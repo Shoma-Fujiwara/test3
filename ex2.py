@@ -11,6 +11,13 @@ results = model("ex1.jpg")
 
 nodes = results[0].keypoints.data[0][:, :2]
 
+# print(nodes)
+
+print(nodes.data[5][0])
+print(nodes.data[6][0])
+print(nodes.data[11][0])
+print(nodes.data[12][0])
+
 # 骨格のリンク
 links = [
     [5, 7],
@@ -51,7 +58,11 @@ for idx, (x, y) in enumerate(nodes):
     if idx in [0, 1, 2, 3, 4]:  
         continue
     center = (int(x), int(y))
+
     cv2.circle(img, center, radius=4, color=(0, 255, 255), thickness=-1)
+
+
+
 
 # 画像を画面に表示する．
 cv2.imshow("", img)
@@ -61,7 +72,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 
-image = cv2.imread("ex1.jpg")
+image = cv2.imread("images/ex1.jpg")
 # 画像の読み込み
 
 cv2.imshow("", image)
