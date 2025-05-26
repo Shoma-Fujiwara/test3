@@ -64,6 +64,7 @@ cv2.destroyAllWindows()
 image = cv2.imread("ex1.jpg")
 # 画像の読み込み
 
+
 cv2.imshow("", image)
 # 画像の表示
 cv2.waitKey(0)

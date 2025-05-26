@@ -18,6 +18,17 @@ print(nodes.data[6][0])
 print(nodes.data[11][0])
 print(nodes.data[12][0])
 
+key_x = (nodes.data[5][0]+nodes.data[6][0]+nodes.data[11][0]+nodes.data[12][0])/4
+print("x座標は", key_x)
+
+key_y = (nodes.data[5][1]+nodes.data[6][1]+nodes.data[11][1]+nodes.data[12][1])/4
+print(key_y)
+
+center_point = (int(key_x), int(key_y))
+
+# 結果を表示
+print("中心点の座標 (x, y):", center_point)
+
 # 骨格のリンク
 links = [
     [5, 7],
@@ -60,6 +71,8 @@ for idx, (x, y) in enumerate(nodes):
     center = (int(x), int(y))
 
     cv2.circle(img, center, radius=4, color=(0, 255, 255), thickness=-1)
+
+cv2.circle(img, center_point, radius=6, color=(0, 255, 0), thickness=-1)
 
 
 
