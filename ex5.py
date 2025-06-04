@@ -18,9 +18,21 @@ for box in boxes:
     xy1 = box.data[0][0:2]
     # 物体領域の終点xy座標を得る．
     xy2 = box.data[0][2:4]
+    x1, y1 = xy1
+    x2, y2 = xy2
 
+    cx, cy = int((x1 + x2) / 2), int((y1 + y2) / 2)
+    region = img[cy-5:cy+5, cx-5:cx+5]  
+    if region.size == 0:
+        continue
+
+    avg_color = region.mean(axis=(0, 1))  
+
+    blue, green, red = avg_color
     
-    cv2.rectangle(
+    if blue > 80 and blue > red * 1.05 and blue > green * 1.05:
+
+      cv2.rectangle(
         img,
         xy1.to(torch.int).tolist(),
         xy2.to(torch.int).tolist(),
